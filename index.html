@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixabay Image Search</title>
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+</head>
+<body>
+    <h1>Pixabay Image Search</h1>
+    <br>
+    <form id="search_input">
+        <div><label class="criteria">Keyword:</label><input type="text" id="q" name="q"></div>
+        <div><label class="criteria">Orientation:</label>
+             <select id="orientation" name="orientation">
+                <option>Select One</option>
+                <option value="vertical">Vertical</option>
+                <option value="horizontal">Horizontal</option>
+            </select>
+            <input type="submit" value="Search">
+        </div>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <div><span id="img1"></span></div>
+    <span id="img2"></span>
+    <span id="img3"></span>
+    <span id="img4"></span>
+    
+    <script>
+         //type="text/javascript" src="functions.js">
+         $("#search_input").submit(function(event){
+            $.ajax({
+                method: "GET",
+                url: "https://pixabay.com/api/?key=5589438-47a0bca778bf23fc2e8c5bf3e&q=sun&orientation=vertical&image_type=vector",
+                dataType: "json",
+                data: { "q": $("#q").val(), 
+                        "orientation": $("#orientation").val()
+                },
+                success: function(result,status) {
+                    //$("#img1").html("hello"); 
+                    result.forEach(function(i) {
+                        $("#img1").append("<img " + "src="+i.hits.previewURL+">");
+                    });
+                }    
+            });
+            result.forEach(function(i) {
+                $("#img1").append("<img src="+i.hits.previewURL+">");
+                event.preventDefault();
+            });    
+            event.preventDefault();
+    //$("#img1").append(`<img src="https://cdn.pixabay.com/photo/2013/10/15/09/12/flower-195893_150.jpg">`);
+});
+    </script>
+</body>
+</html>

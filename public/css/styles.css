@@ -1,0 +1,24 @@
+body h1, body form {
+    text-align: center;
+}
+
+body {
+    background-color: #5F9EA0;
+}
+
+h1, .likebox {
+    color: #F0F8FF;
+}
+
+img {
+    position: relative;
+    width: 250px;
+    display: inline-block;
+}
+
+.likebox {
+    position: absolute;
+    top: 100px;
+}
+
+

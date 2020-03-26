@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-app.engine('html',require('ejs').renderFile);
+app.set('view engine', 'ejs');
 app.use(express.static("public")); //folder for images, css, js
 
 const request = require('request');
